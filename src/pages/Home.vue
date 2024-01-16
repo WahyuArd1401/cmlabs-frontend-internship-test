@@ -7,7 +7,7 @@
         <i class="bi bi-virus"></i>
       </div>
       <h3 class="title">mealapp API website</h3>
-      <h1 class="subtitle" v-motion-pop>See All The Delicious Foods</h1>
+      <h1 class="subtitle" v-motion-pop :delay="500">See All The Delicious Foods</h1>
     </div>
     <div class="list-item ">
       <router-link
@@ -34,7 +34,6 @@ const getData = () => {
     .get(url)
     .then((res) => {
       meals.value = res.data.categories;
-      console.log(meals.value);
     })
     .catch((err) => {
       console.error("Gagal mendapatkan data", err);

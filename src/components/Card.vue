@@ -21,7 +21,7 @@ const props = defineProps({
   imageCard: {
     type: String,
     default: ''
-  }
+  },
 })
 </script>
 

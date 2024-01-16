@@ -1,16 +1,18 @@
 # mealapp
 
-This template should help get you started developing with Vue 3 in Vite.
+This website project uses the Vue.js framework version 3. Apart from that, it also uses several libraries such as:
+1. Axios : fetching data from API urls
+2. Vue Motion : provide animation effects on elements and components
+3. Vue Router : make it easier to manage the navigation of each page
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## Project Setup
+### Download Project
+
+```sh
+git clone https://github.com/WahyuArd1401/cmlabs-frontend-internship-test.git
+```
+### Install Package
 
 ```sh
 npm install
@@ -22,8 +24,20 @@ npm install
 npm run dev
 ```
 
-### Compile and Minify for Production
+### Access in Browser
 
 ```sh
-npm run build
+localhost:<your-port-in-terminal>
 ```
+
+### Access Using the Deployed Url (Alternatif View)
+```sh
+wahyuardian-mealapp.vercel.app
+```
+
+## User Interface
+### Home
+<img src="./src/assets/images/Home.png">
+
+### Category Detail 
+<img src="./src/assets/images/Category Detail.png">

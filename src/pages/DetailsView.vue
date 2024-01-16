@@ -8,7 +8,7 @@
       <i class="bi bi-caret-right-fill"></i>
       <p>{{ categoryName }}</p>
     </div>
-    <h1 class="title">Pasta Meals</h1>
+    <h1 class="title">{{ categoryName }} Meals</h1>
   </div>
   <div class="list-item">
     <Card
@@ -23,7 +23,7 @@
 <script setup>
 import Card from "@/components/Card.vue";
 import axios from "axios";
-import { ref, onBeforeMount } from "vue";
+import { ref, onBeforeMount, onMounted } from "vue";
 import { useRoute } from "vue-router";
 
 const mealsCategory = ref([]);
@@ -37,14 +37,13 @@ const getData = () => {
     .then((res) => {
       mealsCategory.value = res.data.meals;
       categoryName.value = route.params.categoryName;
-      console.log(mealsCategory.value);
     })
     .catch((err) => {
       console.error("Gagal mendapatkan data", err);
     });
 };
 
-onBeforeMount(() => {
+onMounted(() => {
   getData();
 });
 </script>
@@ -88,5 +87,29 @@ onBeforeMount(() => {
 .link {
   text-decoration: none;
   color: rgb(67, 67, 67);
+}
+
+@media (min-width: 1000px) {
+  .list-item {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 999px) {
+  .list-item {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 832px) {
+  .list-item {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .list-item {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
