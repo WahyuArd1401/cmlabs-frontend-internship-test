@@ -108,4 +108,11 @@ onBeforeMount(() => {
     grid-template-columns: 1fr;
   }
 }
+
+@media screen and (max-width: 485px) {
+  .subtitle {
+    font-size: 2rem;
+  }
+  
+}
 </style>

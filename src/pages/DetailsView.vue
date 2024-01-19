@@ -16,6 +16,7 @@
       :key="meal.idMeals"
       :title="meal.strMeal"
       :to="{ name: 'mealsDetail', params: { mealsId: meal.idMeal}}"
+      class="link"
     >
       <Card :title="meal.strMeal" :imageCard="meal.strMealThumb" />
     </router-link>
@@ -91,27 +92,33 @@ onMounted(() => {
   color: rgb(67, 67, 67);
 }
 
-@media (min-width: 1000px) {
+@media screen and (min-width: 1000px) {
   .list-item {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-@media (max-width: 999px) {
+@media screen and (max-width: 999px) {
   .list-item {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media (max-width: 832px) {
+@media screen and (max-width: 832px) {
   .list-item {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 620px) {
+@media screen and (max-width: 620px) {
   .list-item {
     grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .title {
+    font-size: 1.5rem;
   }
 }
 </style>

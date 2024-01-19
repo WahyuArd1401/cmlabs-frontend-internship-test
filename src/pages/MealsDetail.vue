@@ -32,27 +32,28 @@
         <h1 class="content-title secondary">Recipes</h1>
         <div class="content-recipes">
           <ul>
-            <li>step 1</li>
-            <li>step 2</li>
-            <li>step 3</li>
+            <li v-for="recipe in ingredientCount" :key="recipe">{{ mealsData[`strIngredient${recipe}`] }} {{ mealsData[`strMeasure${recipe}`] }}</li>
           </ul>
         </div>
       </div>
     </div>
     <div class="meals-youtube">
-      <iframe :src="mealsData.strYoutube" frameborder="0" width="100%" allowfullscreen></iframe>
-    </div>
+  <div class="iframe-container">
+    <iframe v-if="youtubeEmbedUrl" :src="youtubeEmbedUrl" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>
   </div>
 </template>
 
 <script setup>
 import axios from "axios";
 import { useRoute } from "vue-router";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 
 const mealsData = ref([]);
 const route = useRoute();
 const mealsId = ref("");
+const youtubeEmbedUrl = ref("")
 
 const getData = () => {
   const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${route.params.mealsId}`;
@@ -61,8 +62,29 @@ const getData = () => {
       mealsData.value = res.data.meals[0];
     }
     mealsId.value = route.params.mealsId;
+    youtubeEmbedUrl.value = getYoutubeEmbedUrl(mealsData.value.strYoutube);
   });
 };
+
+const getYoutubeEmbedUrl = (url) => {
+  const regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  const match = url.match(regExp);
+
+  if (match && match[2].length == 11) {
+    return `https://www.youtube.com/embed/${match[2]}`;
+  }
+  return null;
+};
+
+const ingredientCount = computed(() => {
+  let count = 0;
+  for (let i = 1; i <= 20; i++) {
+    if (mealsData.value[`strIngredient${i}`]) {
+      count++;
+    }
+  }
+  return count;
+});
 
 onMounted(() => {
   getData();
@@ -82,6 +104,7 @@ onMounted(() => {
 
 .route {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 30px;
   align-items: center;
@@ -131,6 +154,10 @@ onMounted(() => {
   font-size: 0.8rem;
 }
 
+.content-recipes {
+  margin-bottom: 20px;  
+}
+
 .content-recipes li {
   margin-left: 20px;
   font-size: 0.8rem;
@@ -139,5 +166,35 @@ onMounted(() => {
 .link {
   text-decoration: none;
   color: rgb(67, 67, 67);
+}
+
+.meals-youtube .iframe-container {
+  position: relative;
+  width: 100%;
+  padding-top: 50%;
+  margin-bottom: 20px;
+}
+
+.meals-youtube iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 10px;
+}
+
+
+@media screen and (max-width: 860px) {
+  .content {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .title {
+    font-size: 1.5rem;
+  }
 }
 </style>

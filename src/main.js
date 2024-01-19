@@ -4,6 +4,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import { MotionPlugin } from '@vueuse/motion'
+import VueDOMPurifyHTML from 'vue-dompurify-html';
 
 import Home from '@/pages/Home.vue'
 import DetailsView from '@/pages/DetailsView.vue'

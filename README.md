@@ -41,3 +41,6 @@ wahyuardian-mealapp.vercel.app
 
 ### Category Detail 
 <img src="./src/assets/images/Category Detail.png">
+
+### Category Detail 
+<img src="./src/assets/images/Meals Detail.png">

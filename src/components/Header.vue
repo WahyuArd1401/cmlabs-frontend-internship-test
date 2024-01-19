@@ -3,7 +3,7 @@
     <header>
       <h1 class="logo">mealapp</h1>
       <nav class="nav-list">
-        <a href="#">Home</a>
+        <router-link to="/"><a href="#">Home</a></router-link> 
         <a href="#">Foods</a>
         <a href="#">Ingredients</a>
         <a href="#">Local Culinary</a>
