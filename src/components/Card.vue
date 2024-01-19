@@ -56,5 +56,6 @@ const props = defineProps({
   color: #ffffff;
   z-index: 1;
   text-align: center;
+  text-decoration: none;
 }
 </style>

@@ -11,19 +11,21 @@
     <h1 class="title">{{ categoryName }} Meals</h1>
   </div>
   <div class="list-item">
-    <Card
+    <router-link
       v-for="meal in mealsCategory"
       :key="meal.idMeals"
       :title="meal.strMeal"
-      :imageCard="meal.strMealThumb"
-    />
+      :to="{ name: 'mealsDetail', params: { mealsId: meal.idMeal}}"
+    >
+      <Card :title="meal.strMeal" :imageCard="meal.strMealThumb" />
+    </router-link>
   </div>
 </template>
 
 <script setup>
 import Card from "@/components/Card.vue";
 import axios from "axios";
-import { ref, onBeforeMount, onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 
 const mealsCategory = ref([]);

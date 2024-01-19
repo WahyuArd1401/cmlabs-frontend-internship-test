@@ -7,11 +7,13 @@ import { MotionPlugin } from '@vueuse/motion'
 
 import Home from '@/pages/Home.vue'
 import DetailsView from '@/pages/DetailsView.vue'
+import MealsDetail from '@/pages/MealsDetail.vue'
 
 
 const routes = [
   { path: '/', component: Home },
   { path: '/category/:categoryName', name: 'category', component: DetailsView, props: true },
+  { path: '/category/:categoryName/:mealsId', name: 'mealsDetail', component: MealsDetail, props: true },
 ]
 
 const router = createRouter({
